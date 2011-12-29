@@ -1,4 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+Hoş geldiniz. Aşağıda bu sisteme kayıtlı metamodeller gösterilmektedir. İncelemek ve üzerinde değişiklik yapmak istediğinize tıklayınız.
+
+<ul>
+#{list items:all, as:'one'}
+    <li>${one.getName()}</li>
+#{/list}
+</ul>
