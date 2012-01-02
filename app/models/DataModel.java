@@ -24,7 +24,5 @@ public class DataModel extends Model {
   @JoinTable(name="datamodelentity", 
       joinColumns={@JoinColumn(name="datamodelFK", referencedColumnName="ID")},
       inverseJoinColumns={@JoinColumn(name="entityFK", referencedColumnName="ID")})
-  public Set<models.Entity> entities;  
-  
-
+  public Set<models.Entity> entities;
 }
