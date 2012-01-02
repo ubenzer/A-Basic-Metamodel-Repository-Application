@@ -7,6 +7,6 @@ import play.db.jpa.Model;
 @Entity
 public class AttributeType extends Model {
     
-  String name;
-  
+  public String name;
+
 }

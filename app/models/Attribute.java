@@ -15,7 +15,7 @@ public class Attribute extends Model {
   public long isPartOfKeyAttib;
   @ManyToOne
   @JoinColumn(name="attributetypeFK", nullable=false)
-  public AttributeType attributeType;
+  public AttributeType belongingAttributeType;
   //public long attributetypeFK;
   
   @ManyToOne
