@@ -25,4 +25,16 @@ public class DataModel extends Model {
       joinColumns={@JoinColumn(name="datamodelFK", referencedColumnName="ID")},
       inverseJoinColumns={@JoinColumn(name="entityFK", referencedColumnName="ID")})
   public Set<models.Entity> entities;
+  
+  @ManyToMany
+  @JoinTable(name="datamodelrelationship", 
+  joinColumns={@JoinColumn(name="datamodelFK", referencedColumnName="ID")},
+  inverseJoinColumns={@JoinColumn(name="relationshipFK", referencedColumnName="ID")})
+  public Set<Relationship> relationships;
+  
+  @ManyToMany
+  @JoinTable(name="datamodelsubtyping", 
+  joinColumns={@JoinColumn(name="datamodelFK", referencedColumnName="ID")},
+  inverseJoinColumns={@JoinColumn(name="subtypingFK", referencedColumnName="ID")})
+  public Set<Subtyping> subtypings;
 }
