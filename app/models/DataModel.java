@@ -7,11 +7,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class DataModel extends Model {
-    
+   
+  @Required
   public String name;
   
   @ManyToMany
@@ -37,4 +39,8 @@ public class DataModel extends Model {
   joinColumns={@JoinColumn(name="datamodelFK", referencedColumnName="ID")},
   inverseJoinColumns={@JoinColumn(name="subtypingFK", referencedColumnName="ID")})
   public Set<Subtyping> subtypings;
+  
+  public String toString() {
+    return this.name;
+  }
 }

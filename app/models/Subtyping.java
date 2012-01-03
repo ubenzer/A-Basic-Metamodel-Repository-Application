@@ -25,4 +25,8 @@ public class Subtyping extends Model {
   
   @Lob
   public String categorizingValue;
+  
+  public String toString() {
+    return supertypeEntity.entityName + " --> " + subtypeEntity.entityName;
+  }
 }

@@ -1,3 +1,16 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+DataModels=Data Models
+DataModel=Data Model
+name=Name
+attributes=Attributes Related With
+entities=Entities Related With
+relationships=Relationships Related With
+subtypings=Subtypings Related With
+belongingEntity=The Entity Which Attribute Belongs To
+primary=Is identifier?
+belongingAttributeType=Type
+domain=Domain Constraint
+AttributeTypes=Attribute Types
+entityName=Entity Name

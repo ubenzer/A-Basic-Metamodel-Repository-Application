@@ -19,4 +19,7 @@ public class Relationship extends Model {
   @JoinColumn(name="entityForeignIdentifierAttributeFK", nullable=false)
   public Attribute foreignKeyAttribute;
 
+  public String toString() {
+    return primaryKeyAtrribute.name + " PK to FK " + foreignKeyAttribute.name;
+  }
 }

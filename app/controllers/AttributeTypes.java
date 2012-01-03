@@ -9,15 +9,4 @@ import java.util.*;
 import models.*;
 
 public class AttributeTypes extends CRUD {
-
-//    public static void index() {
-//      
-//        List<DataModel> all = DataModel.findAll();
-//        render(all);
-//    }
-//    
-//    public static void add(String clazz) {
-//
-//    }
-
 }

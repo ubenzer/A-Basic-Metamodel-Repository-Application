@@ -12,6 +12,11 @@ public class Entity extends Model {
     
   public String entityName;
   
-  @OneToMany(cascade=CascadeType.ALL, mappedBy="entityFK")
-  public Set<Attribute> attributes;
+  public String getAttributes() {
+    return Attribute.find("byEntityFK", this.id).fetch().toString();
+  }
+  
+  public String toString() {
+    return entityName;
+  }
 }

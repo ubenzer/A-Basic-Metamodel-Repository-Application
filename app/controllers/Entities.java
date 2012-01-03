@@ -8,16 +8,8 @@ import java.util.*;
 
 import models.*;
 
+@CRUD.For(Entity.class)
 public class Entities extends CRUD {
 
-//    public static void index() {
-//      
-//        List<DataModel> all = DataModel.findAll();
-//        render(all);
-//    }
-//    
-//    public static void add(String clazz) {
-//
-//    }
 
 }

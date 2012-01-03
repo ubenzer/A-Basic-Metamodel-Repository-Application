@@ -18,4 +18,8 @@ public class Domain extends Model {
   @ManyToOne
   @JoinColumn(name="attributetypeFK", nullable=false)
   public AttributeType attributeType;
+  
+  public String toString() {
+    return name;
+  }
 }

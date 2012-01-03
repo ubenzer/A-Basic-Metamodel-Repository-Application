@@ -17,4 +17,8 @@ public class InstanceAttribute extends Model {
   public Attribute attributeType;
   public long instanceFK;
   public String value;
+
+  public String toString() {
+    return attributeType.name + ": " + value;
+  }
 }

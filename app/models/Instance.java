@@ -22,4 +22,8 @@ public class Instance extends Model {
   @ManyToOne
   @JoinColumn(name="entityFK", nullable=false)
   public models.Entity belongingEntityType;
+  
+  public String toString() {
+    return "Instance of " + belongingEntityType.entityName + " with ID #" + getId();
+  }
 }
