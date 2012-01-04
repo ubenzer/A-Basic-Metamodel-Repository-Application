@@ -1,6 +1,5 @@
 package models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,6 +30,6 @@ public class Attribute extends Model {
   public Domain domain;
   
   public String toString() {
-    return name;
+    return this.belongingEntity + "." + name;
   }
 }

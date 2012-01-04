@@ -1,8 +1,8 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
-DataModels=Data Models
-DataModel=Data Model
+DataModels=Metamodels
+DataModel=Metamodel
 name=Name
 attributes=Attributes Related With
 entities=Entities Related With
@@ -22,3 +22,14 @@ identifiers=Identifiers
 allvalues=All Values
 InstanceAttributes= Instance Attributes
 shortenedValue=Value
+validation.relationShipInconsistency.notKeyAttrib=%1 is not a key attribute, you can't make relationship to it.
+validation.relationShipInconsistency.typeMismatch=Type mismatch: %1 PK type and %2 FK type are different.
+toString=Relationship Name
+getPKAttrEntity=Primary Entity which is referenced
+getFKAttrEntity=Foreign Entity which refers
+supertypeEntity=Supertype Entity
+subtypeEntity=Subtype Entity
+categorizingAttributeID=The attribute which categorizes supertype
+categorizingValue=The attribute value which means an instance is member of subtype
+validation.subtypingInconsistency=Categorizing attribute %1 is member of %2, but supertype is %3 which are not the same!
+crud.title=U! Metamodel Repository

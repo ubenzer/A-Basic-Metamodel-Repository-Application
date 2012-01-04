@@ -10,7 +10,7 @@ import play.data.validation.CheckWith;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
-import validators.InstanceAttributeConsisance;
+import validators.InstanceAttributeConsistance;
 
 @Entity
 @Table(name="instance_attribute")
@@ -19,7 +19,7 @@ public class InstanceAttribute extends Model {
   @Required
   @ManyToOne
   @JoinColumn(name="instanceFK", nullable=false)
-  @CheckWith(InstanceAttributeConsisance.class)
+  @CheckWith(InstanceAttributeConsistance.class)
   public Instance belongingInstance;
   
   @ManyToOne

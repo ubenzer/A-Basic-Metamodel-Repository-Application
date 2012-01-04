@@ -5,7 +5,7 @@ import models.Instance;
 import models.InstanceAttribute;
 import play.data.validation.Check;
 
-public class InstanceAttributeConsisance extends Check {
+public class InstanceAttributeConsistance extends Check {
 
   @Override
   public boolean isSatisfied(Object validatedObject, Object value) {
