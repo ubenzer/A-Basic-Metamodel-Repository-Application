@@ -39,6 +39,9 @@ public class Instance extends Model {
         }
       }
     }
+    if(out.equals("[")) {
+      return "[]";
+    }
     return out.substring(0, out.length()-3).concat("\"]");
   }
   public String toString() {

@@ -18,6 +18,12 @@ public class InstanceAttributeConsistance extends Check {
           belongingInstance.belongingEntityType.toString(), belongingInstance.belongingEntityType.getAttributes().toString(), ia.attributeType.toString());
       return false;
     }
+    for(InstanceAttribute sibling : belongingInstance.attributes()) {
+      if(sibling.attributeType.equals(ia.attributeType)) {
+        setMessage("validation.instanceAttributeDuplicate", ia.attributeType.toString());
+        return false;
+      }      
+    }    
     return true;
   }
 

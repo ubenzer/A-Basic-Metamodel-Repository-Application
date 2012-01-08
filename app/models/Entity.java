@@ -16,6 +16,6 @@ public class Entity extends Model {
   }
   
   public String toString() {
-    return entityName;
+    return entityName.toString();
   }
 }
