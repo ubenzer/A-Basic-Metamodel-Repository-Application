@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2012 at 06:55 PM
+-- Generation Time: Jan 09, 2012 at 02:48 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -19,6 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `metamodel_repository`
 --
+DROP DATABASE `metamodel_repository`;
+CREATE DATABASE `metamodel_repository` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `metamodel_repository`;
 
 -- --------------------------------------------------------
 
