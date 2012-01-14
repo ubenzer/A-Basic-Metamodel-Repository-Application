@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.3.7deb5build0.10.10.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2012 at 02:48 PM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Generation Time: Jan 14, 2012 at 03:38 AM
+-- Server version: 5.1.49
+-- PHP Version: 5.3.3-1ubuntu9.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,18 +18,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `metamodel_repository`
 --
-DROP DATABASE `metamodel_repository`;
-CREATE DATABASE `metamodel_repository` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `metamodel_repository`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attribute`
+-- Table structure for table `Attribute`
 --
 
-DROP TABLE IF EXISTS `attribute`;
-CREATE TABLE `attribute` (
+CREATE TABLE IF NOT EXISTS `Attribute` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `entityFK` int(11) NOT NULL,
   `isPartOfKeyAttib` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'is this attribute part of an primary identifier?',
@@ -44,10 +39,10 @@ CREATE TABLE `attribute` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
 
 --
--- Dumping data for table `attribute`
+-- Dumping data for table `Attribute`
 --
 
-INSERT INTO `attribute` (`ID`, `entityFK`, `isPartOfKeyAttib`, `attributetypeFK`, `domainFK`, `name`) VALUES
+INSERT INTO `Attribute` (`ID`, `entityFK`, `isPartOfKeyAttib`, `attributetypeFK`, `domainFK`, `name`) VALUES
 (1, 1, 1, 1, NULL, 'applicationID'),
 (2, 1, 0, 2, NULL, 'applicationDescription'),
 (3, 1, 0, 2, NULL, 'softwareSupplierFK'),
@@ -160,21 +155,20 @@ INSERT INTO `attribute` (`ID`, `entityFK`, `isPartOfKeyAttib`, `attributetypeFK`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attributetype`
+-- Table structure for table `AttributeType`
 --
 
-DROP TABLE IF EXISTS `attributetype`;
-CREATE TABLE `attributetype` (
+CREATE TABLE IF NOT EXISTS `AttributeType` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `attributetype`
+-- Dumping data for table `AttributeType`
 --
 
-INSERT INTO `attributetype` (`ID`, `name`) VALUES
+INSERT INTO `AttributeType` (`ID`, `name`) VALUES
 (1, 'INT'),
 (2, 'TEXT'),
 (3, 'DATETIME'),
@@ -184,21 +178,20 @@ INSERT INTO `attributetype` (`ID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datamodel`
+-- Table structure for table `DataModel`
 --
 
-DROP TABLE IF EXISTS `datamodel`;
-CREATE TABLE `datamodel` (
+CREATE TABLE IF NOT EXISTS `DataModel` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `datamodel`
+-- Dumping data for table `DataModel`
 --
 
-INSERT INTO `datamodel` (`ID`, `name`) VALUES
+INSERT INTO `DataModel` (`ID`, `name`) VALUES
 (1, 'The Application Management Metamodel'),
 (2, 'The Activity Management Metamodel'),
 (3, 'The Infrastructure Management Metamodel');
@@ -209,8 +202,7 @@ INSERT INTO `datamodel` (`ID`, `name`) VALUES
 -- Table structure for table `datamodelattribute`
 --
 
-DROP TABLE IF EXISTS `datamodelattribute`;
-CREATE TABLE `datamodelattribute` (
+CREATE TABLE IF NOT EXISTS `datamodelattribute` (
   `datamodelFK` int(11) NOT NULL,
   `attributeFK` int(11) NOT NULL,
   PRIMARY KEY (`datamodelFK`,`attributeFK`),
@@ -337,8 +329,7 @@ INSERT INTO `datamodelattribute` (`datamodelFK`, `attributeFK`) VALUES
 -- Table structure for table `datamodelentity`
 --
 
-DROP TABLE IF EXISTS `datamodelentity`;
-CREATE TABLE `datamodelentity` (
+CREATE TABLE IF NOT EXISTS `datamodelentity` (
   `datamodelFK` int(11) NOT NULL,
   `entityFK` int(11) NOT NULL,
   PRIMARY KEY (`datamodelFK`,`entityFK`),
@@ -387,8 +378,7 @@ INSERT INTO `datamodelentity` (`datamodelFK`, `entityFK`) VALUES
 -- Table structure for table `datamodelrelationship`
 --
 
-DROP TABLE IF EXISTS `datamodelrelationship`;
-CREATE TABLE `datamodelrelationship` (
+CREATE TABLE IF NOT EXISTS `datamodelrelationship` (
   `datamodelFK` int(11) NOT NULL,
   `relationshipFK` int(11) NOT NULL,
   PRIMARY KEY (`datamodelFK`,`relationshipFK`),
@@ -446,8 +436,7 @@ INSERT INTO `datamodelrelationship` (`datamodelFK`, `relationshipFK`) VALUES
 -- Table structure for table `datamodelsubtyping`
 --
 
-DROP TABLE IF EXISTS `datamodelsubtyping`;
-CREATE TABLE `datamodelsubtyping` (
+CREATE TABLE IF NOT EXISTS `datamodelsubtyping` (
   `datamodelFK` int(11) NOT NULL,
   `subtypingFK` int(11) NOT NULL,
   PRIMARY KEY (`datamodelFK`,`subtypingFK`),
@@ -469,11 +458,10 @@ INSERT INTO `datamodelsubtyping` (`datamodelFK`, `subtypingFK`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `domain`
+-- Table structure for table `Domain`
 --
 
-DROP TABLE IF EXISTS `domain`;
-CREATE TABLE `domain` (
+CREATE TABLE IF NOT EXISTS `Domain` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `constraintExpression` longtext NOT NULL,
@@ -482,24 +470,28 @@ CREATE TABLE `domain` (
   KEY `FK7A58C0E45AFA4E6D` (`attributetypeFK`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `Domain`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entity`
+-- Table structure for table `Entity`
 --
 
-DROP TABLE IF EXISTS `entity`;
-CREATE TABLE `entity` (
+CREATE TABLE IF NOT EXISTS `Entity` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `entityName` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
--- Dumping data for table `entity`
+-- Dumping data for table `Entity`
 --
 
-INSERT INTO `entity` (`ID`, `entityName`) VALUES
+INSERT INTO `Entity` (`ID`, `entityName`) VALUES
 (1, 'application'),
 (2, 'softwareSupplier'),
 (3, 'applicationInstalliation'),
@@ -534,11 +526,10 @@ INSERT INTO `entity` (`ID`, `entityName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instance`
+-- Table structure for table `Instance`
 --
 
-DROP TABLE IF EXISTS `instance`;
-CREATE TABLE `instance` (
+CREATE TABLE IF NOT EXISTS `Instance` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `entityFK` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
@@ -546,10 +537,10 @@ CREATE TABLE `instance` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='instance' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `instance`
+-- Dumping data for table `Instance`
 --
 
-INSERT INTO `instance` (`ID`, `entityFK`) VALUES
+INSERT INTO `Instance` (`ID`, `entityFK`) VALUES
 (1, 1),
 (2, 2);
 
@@ -559,8 +550,7 @@ INSERT INTO `instance` (`ID`, `entityFK`) VALUES
 -- Table structure for table `instance_attribute`
 --
 
-DROP TABLE IF EXISTS `instance_attribute`;
-CREATE TABLE `instance_attribute` (
+CREATE TABLE IF NOT EXISTS `instance_attribute` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `instanceFK` int(11) NOT NULL,
   `attributeFK` int(11) NOT NULL,
@@ -588,11 +578,10 @@ INSERT INTO `instance_attribute` (`ID`, `instanceFK`, `attributeFK`, `value`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `relationship`
+-- Table structure for table `Relationship`
 --
 
-DROP TABLE IF EXISTS `relationship`;
-CREATE TABLE `relationship` (
+CREATE TABLE IF NOT EXISTS `Relationship` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `entityIdentifierAttributeFK` int(11) NOT NULL,
   `entityForeignIdentifierAttributeFK` int(11) NOT NULL COMMENT 'primaryKeyAttributeReference',
@@ -603,10 +592,10 @@ CREATE TABLE `relationship` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
--- Dumping data for table `relationship`
+-- Dumping data for table `Relationship`
 --
 
-INSERT INTO `relationship` (`ID`, `entityIdentifierAttributeFK`, `entityForeignIdentifierAttributeFK`) VALUES
+INSERT INTO `Relationship` (`ID`, `entityIdentifierAttributeFK`, `entityForeignIdentifierAttributeFK`) VALUES
 (2, 1, 12),
 (3, 1, 17),
 (4, 1, 21),
@@ -650,11 +639,10 @@ INSERT INTO `relationship` (`ID`, `entityIdentifierAttributeFK`, `entityForeignI
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subtyping`
+-- Table structure for table `Subtyping`
 --
 
-DROP TABLE IF EXISTS `subtyping`;
-CREATE TABLE `subtyping` (
+CREATE TABLE IF NOT EXISTS `Subtyping` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `supertypeEntityFK` int(11) NOT NULL,
   `subtypeEntityFK` int(11) NOT NULL,
@@ -668,10 +656,10 @@ CREATE TABLE `subtyping` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `subtyping`
+-- Dumping data for table `Subtyping`
 --
 
-INSERT INTO `subtyping` (`ID`, `supertypeEntityFK`, `subtypeEntityFK`, `categorizingAttributeID`, `categorizingValue`) VALUES
+INSERT INTO `Subtyping` (`ID`, `supertypeEntityFK`, `subtypeEntityFK`, `categorizingAttributeID`, `categorizingValue`) VALUES
 (1, 5, 6, 62, '0'),
 (2, 5, 7, 62, '1'),
 (3, 17, 18, 61, '1'),
@@ -683,76 +671,72 @@ INSERT INTO `subtyping` (`ID`, `supertypeEntityFK`, `subtypeEntityFK`, `categori
 --
 
 --
--- Constraints for table `attribute`
+-- Constraints for table `Attribute`
 --
-ALTER TABLE `attribute`
-  ADD CONSTRAINT `FK7839CA7C253BE3EF` FOREIGN KEY (`entityFK`) REFERENCES `entity` (`ID`),
-  ADD CONSTRAINT `FK7839CA7C5AFA4E6D` FOREIGN KEY (`attributetypeFK`) REFERENCES `attributetype` (`ID`),
-  ADD CONSTRAINT `FK7839CA7CE42F1171` FOREIGN KEY (`domainFK`) REFERENCES `domain` (`ID`);
+ALTER TABLE `Attribute`
+  ADD CONSTRAINT `FK7839CA7C253BE3EF` FOREIGN KEY (`entityFK`) REFERENCES `Entity` (`ID`),
+  ADD CONSTRAINT `FK7839CA7C5AFA4E6D` FOREIGN KEY (`attributetypeFK`) REFERENCES `AttributeType` (`ID`),
+  ADD CONSTRAINT `FK7839CA7CE42F1171` FOREIGN KEY (`domainFK`) REFERENCES `Domain` (`ID`);
 
 --
 -- Constraints for table `datamodelattribute`
 --
 ALTER TABLE `datamodelattribute`
-  ADD CONSTRAINT `FK1366BBD4ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `datamodel` (`ID`),
-  ADD CONSTRAINT `FK1366BBDC2348C59` FOREIGN KEY (`attributeFK`) REFERENCES `attribute` (`ID`);
+  ADD CONSTRAINT `FK1366BBD4ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `DataModel` (`ID`),
+  ADD CONSTRAINT `FK1366BBDC2348C59` FOREIGN KEY (`attributeFK`) REFERENCES `Attribute` (`ID`);
 
 --
 -- Constraints for table `datamodelentity`
 --
 ALTER TABLE `datamodelentity`
-  ADD CONSTRAINT `FKE7F69E62253BE3EF` FOREIGN KEY (`entityFK`) REFERENCES `entity` (`ID`),
-  ADD CONSTRAINT `FKE7F69E624ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `datamodel` (`ID`);
+  ADD CONSTRAINT `FKE7F69E62253BE3EF` FOREIGN KEY (`entityFK`) REFERENCES `Entity` (`ID`),
+  ADD CONSTRAINT `FKE7F69E624ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `DataModel` (`ID`);
 
 --
 -- Constraints for table `datamodelrelationship`
 --
 ALTER TABLE `datamodelrelationship`
-  ADD CONSTRAINT `FK490115774ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `datamodel` (`ID`),
-  ADD CONSTRAINT `FK49011577EBC11C59` FOREIGN KEY (`relationshipFK`) REFERENCES `relationship` (`ID`);
+  ADD CONSTRAINT `FK490115774ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `DataModel` (`ID`),
+  ADD CONSTRAINT `FK49011577EBC11C59` FOREIGN KEY (`relationshipFK`) REFERENCES `Relationship` (`ID`);
 
 --
 -- Constraints for table `datamodelsubtyping`
 --
 ALTER TABLE `datamodelsubtyping`
-  ADD CONSTRAINT `FK220894D817F303CF` FOREIGN KEY (`subtypingFK`) REFERENCES `subtyping` (`ID`),
-  ADD CONSTRAINT `FK220894D84ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `datamodel` (`ID`);
+  ADD CONSTRAINT `FK220894D817F303CF` FOREIGN KEY (`subtypingFK`) REFERENCES `Subtyping` (`ID`),
+  ADD CONSTRAINT `FK220894D84ADC95BF` FOREIGN KEY (`datamodelFK`) REFERENCES `DataModel` (`ID`);
 
 --
--- Constraints for table `domain`
+-- Constraints for table `Domain`
 --
-ALTER TABLE `domain`
-  ADD CONSTRAINT `FK7A58C0E45AFA4E6D` FOREIGN KEY (`attributetypeFK`) REFERENCES `attributetype` (`ID`);
+ALTER TABLE `Domain`
+  ADD CONSTRAINT `FK7A58C0E45AFA4E6D` FOREIGN KEY (`attributetypeFK`) REFERENCES `AttributeType` (`ID`);
 
 --
--- Constraints for table `instance`
+-- Constraints for table `Instance`
 --
-ALTER TABLE `instance`
-  ADD CONSTRAINT `FK24F0F8B5253BE3EF` FOREIGN KEY (`entityFK`) REFERENCES `entity` (`ID`);
+ALTER TABLE `Instance`
+  ADD CONSTRAINT `FK24F0F8B5253BE3EF` FOREIGN KEY (`entityFK`) REFERENCES `Entity` (`ID`);
 
 --
 -- Constraints for table `instance_attribute`
 --
 ALTER TABLE `instance_attribute`
   ADD CONSTRAINT `FKC61243725F58A2FD` FOREIGN KEY (`instanceFK`) REFERENCES `instance_attribute` (`ID`),
-  ADD CONSTRAINT `FKC6124372C2348C59` FOREIGN KEY (`attributeFK`) REFERENCES `attribute` (`ID`),
-  ADD CONSTRAINT `FKC6124372F25567D3` FOREIGN KEY (`instanceFK`) REFERENCES `instance` (`ID`);
+  ADD CONSTRAINT `FKC6124372C2348C59` FOREIGN KEY (`attributeFK`) REFERENCES `Attribute` (`ID`),
+  ADD CONSTRAINT `FKC6124372F25567D3` FOREIGN KEY (`instanceFK`) REFERENCES `Instance` (`ID`);
 
 --
--- Constraints for table `relationship`
+-- Constraints for table `Relationship`
 --
-ALTER TABLE `relationship`
-  ADD CONSTRAINT `FKFA2FCA5826F4991F` FOREIGN KEY (`entityForeignIdentifierAttributeFK`) REFERENCES `attribute` (`ID`),
-  ADD CONSTRAINT `FKFA2FCA58EBA1040D` FOREIGN KEY (`entityIdentifierAttributeFK`) REFERENCES `attribute` (`ID`);
+ALTER TABLE `Relationship`
+  ADD CONSTRAINT `FKFA2FCA5826F4991F` FOREIGN KEY (`entityForeignIdentifierAttributeFK`) REFERENCES `Attribute` (`ID`),
+  ADD CONSTRAINT `FKFA2FCA58EBA1040D` FOREIGN KEY (`entityIdentifierAttributeFK`) REFERENCES `Attribute` (`ID`);
 
 --
--- Constraints for table `subtyping`
+-- Constraints for table `Subtyping`
 --
-ALTER TABLE `subtyping`
-  ADD CONSTRAINT `FK990BF397470AF769` FOREIGN KEY (`subtypeEntityFK`) REFERENCES `entity` (`ID`),
-  ADD CONSTRAINT `FK990BF39757C5A824` FOREIGN KEY (`supertypeEntityFK`) REFERENCES `entity` (`ID`),
-  ADD CONSTRAINT `FK990BF397FACD3FD9` FOREIGN KEY (`categorizingAttributeID`) REFERENCES `attribute` (`ID`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `Subtyping`
+  ADD CONSTRAINT `FK990BF397470AF769` FOREIGN KEY (`subtypeEntityFK`) REFERENCES `Entity` (`ID`),
+  ADD CONSTRAINT `FK990BF39757C5A824` FOREIGN KEY (`supertypeEntityFK`) REFERENCES `Entity` (`ID`),
+  ADD CONSTRAINT `FK990BF397FACD3FD9` FOREIGN KEY (`categorizingAttributeID`) REFERENCES `Attribute` (`ID`);
