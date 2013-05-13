@@ -21,7 +21,7 @@ Contact
 -
  - [My Blog](http://www.ubenzer.com/)
  - [Contact Page](http://www.ubenzer.com/iletisim/) (Only in English and Turkish)
- - [Detailed Project Description in Turkish](https://github.com/ubenzer/A-Basic-Metamodel-Repository-Application/blob/master/Proje%20Raporu.pdf?raw=true)
+ - [Detailed Project Description in Turkish](https://speakerdeck.com/ubenzer/metamodel-repository-application)
  
 Brief Installiation Instructions
 -
