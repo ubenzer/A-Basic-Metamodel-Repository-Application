@@ -2,3 +2,5 @@
 /crud
 /conf/crud
 /public/crud
+.DS_Store
+/eclipse
