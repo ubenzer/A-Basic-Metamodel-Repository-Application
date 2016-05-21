@@ -1,6 +1,8 @@
 Metamodel Repository Application
 --------
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 This metadata management application stores metamodels (M1) and relationships within/between this metamodels. Stored information includes metamodel entities, attributes, super and sub type relationships, relationships between entities and instances of entities (M0).
 
 This application is a CRUD wrapper for designed metamodel written in Play Framework 1.x.
